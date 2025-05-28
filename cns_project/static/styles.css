@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: url("Wonderhoy.jpg") no-repeat center center fixed;
+  background: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: 220px; /* Shift content for sidebar */
+}
+
+/* Sidebar Navbar */
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #ff66bb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding-left: 0;
+}
+
+.nav-links li {
+  width: 100%;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  transition: background 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 12rem 8rem;
+  min-height: 700px;
+  background: url("Wonderhoy.jpg") no-repeat center center;
+  background-size: cover;
+  color: white; /* helps make text readable */
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #1f1f2e;
+}
+
+.hero-desc {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn,
+.btn-outline {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #ff66bb;
+  color: white;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 2px solid #ff66bb;
+  color: #ff66bb;
+}
+
+.btn:hover,
+.btn-outline:hover {
+  opacity: 0.85;
+}
+
+/* hero for cipher.html */
+#hero-main {
+  flex: 3;
+}
+
+/* general section */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  max-width: 300px;
+  text-align: left;
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #ff66bb;
+}
+
+.card p {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Cipher Options Section */
+.cipher-options {
+  background-color: #ffe6f0;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Caesar & Vigenere details*/
+.details {
+  background-color: #ffe6f0;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.details h2 {
+  margin-top: 0;
+}
+
+.details .card-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.details .card {
+  max-width: 800px;
+}
+
+/* eliminate difference of distance from hero to next sec in caesar.html and cipher.html */
+#hero-ciphers .hero-desc {
+  margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+  background-color: #1f1f2e;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-main h3 {
+  color: #ff66bb;
+  margin-bottom: 0.5rem;
+}
+
+.footer-copy small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #bbb;
+}
+
+/* cipher.html footer */
+#main-foot {
+  flex: 1;
+}
+
+/* encryp/decrypt form */
+#encrypt-decrypt {
+  background-color: #ffe6f0;
+}
+
+.cipher-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+textarea,
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ff66bb;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.instruction {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}

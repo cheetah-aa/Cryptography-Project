@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Tool</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Group 9</div>
+      <ul class="nav-links">
+        <li>
+          <a href="/"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="caesar"><i class="fas fa-lock"></i> Caesar Cipher</a>
+        </li> <!-- change to caesar because in urls.py we name it caesar only which make url appear /caesar -->
+        <li>
+          <a href="vigenere"><i class="fas fa-key"></i> Vigenère Cipher</a>
+        </li>
+        <li>
+          <a href="#learn-more"><i class="fas fa-book"></i> Learn More</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section id="hero-main" class="hero">
+      <h1 class="hero-title">Cipher Tool</h1>
+      <p class="hero-desc">
+        Welcome to our Cipher Tool! <br />
+        This application allows you to encrypt and decrypt messages <br />using
+        classical cryptographic methods—Caesar Cipher and Vigenère Cipher
+      </p>
+      <div class="hero-buttons">
+        <a href="#learn-more" class="btn">Explore Now</a>
+      </div>
+    </section>
+
+    <section id="learn-more" class="cipher-options">
+      <h2>Learn More About Cipher</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>Caesar Cipher</h3>
+          <p>
+            A simple substitution cipher where each letter in the plaintext is
+            shifted a certain number of places down the alphabet.
+          </p>
+          <a href="caesar#caesar-details" class="btn">See Details</a>
+        </div>
+        <div class="card">
+          <h3>Vigenère Cipher</h3>
+          <p>
+            A method of encrypting alphabetic text by using a simple form of
+            polyalphabetic substitution based on a keyword.
+          </p>
+                    <a href="vigenere#vigenere-details" class="btn">See Details</a>
+
+        </div>
+      </div>
+    </section>
+
+    <footer id="main-foot">
+      <div class="footer-main">
+        <h3 class="footer-title">Cipher Tool</h3>
+        <p>Explore the art of cryptography</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; Group 9. All rights reserved.</p>
+        <small
+          >Created with passion for cryptography and network security
+          &lt;3</small
+        >
+        <small>WONDERHOY!!!</small>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vigenère Cipher</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Group 9</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#vigenere-details" onclick="document.getElementById('vigenere-details').scrollIntoView({behavior: 'smooth'}); return false;">Details</a></li>
+        <li><a href="#encrypt-decrypt" onclick="document.getElementById('encrypt-decrypt').scrollIntoView({behavior: 'smooth'}); return false;">Tool</a></li>
+      </ul>
+    </nav>
+
+    <section id="hero-ciphers" class="hero">
+      <h1 class="hero-title">Vigenère Cipher</h1>
+      <p class="hero-desc">
+        A polyalphabetic substitution cipher that uses a keyword to encrypt text
+        by shifting each letter.
+      </p>
+    </section>
+
+    <section id="vigenere-details" class="details">
+      <h2>Understanding Vigenère Cipher</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>What is Vigenère Cipher?</h3>
+          <ul class="info-list">
+            <li>
+              <strong>Definition:</strong> A method of encrypting alphabetic
+              text by using a series of interwoven Caesar ciphers based on the
+              letters of a keyword.
+            </li>
+            <li>
+              <strong>Named after:</strong> Blaise de Vigenère, although it was
+              first described by Giovan Battista Bellaso.
+            </li>
+            <li>
+              <strong>Category:</strong> Polyalphabetic substitution cipher
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>How It Works</h3>
+          <p>
+            In Vigenère cipher, the sender and the recipient must agree upon a
+            keyword that can be any word.
+          </p>
+          <p>
+            The keyword works in a similar manner as the Caesar cipher, but each
+            letter of the keyword will be converted into integers from 0 to 25
+            indicates the number of spots each letter of plaintext should be
+            moved down in the alphabet with respect to the letter in keyword
+          </p>
+          <p>
+            In case the plaintext is longer than the keyword, we start repeating
+            the keyword from the first letter once we run out of keyword
+            letters.
+          </p>
+          <p>
+            The alphabet A-Z is represented by numbers from 0-25 respectively
+            (e.g., A=0, B=1,...,Z=25)
+          </p>
+          <p>
+            <strong>Example:</strong>
+            if the key is "KEY" and the plaintext that we want to encrypt is
+            "hey". So keyword K=10, E=4, Y=24, and plaintext H=7, E=4, Y=24.
+            Therefore the ciphertext will be "RIW"
+          </p>
+          <p>As for decryption, it will be the reverse of the encryption</p>
+          <p>
+            The encryption and decryption of Caesar cipher can be represented by
+            modular arithmetic:
+          </p>
+          <ul class="info-list">
+            <li>
+              <strong>Encryption:</strong>
+              C = (P + k) mod 26
+            </li>
+            <li>
+              <strong>Decryption</strong>
+              P = (C - k) mod 26
+            </li>
+          </ul>
+          <p>where</p>
+          <ul class="info-list">
+            <li>C: Ciphertext</li>
+            <li>P: Plaintext</li>
+            <li>k: key</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Terminology</h3>
+          <ul class="info-list">
+            <li>
+              <strong>Keyword:</strong> A string of letters used to determine
+              the shift amount for each letter of the plaintext.
+            </li>
+            <li>
+              <strong>Plaintext:</strong> The original, readable message before
+              encryption.
+            </li>
+            <li>
+              <strong>Ciphertext:</strong> The encrypted message after applying
+              the Vigenère cipher.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="encrypt-decrypt">
+      <h2>Encryption & Decryption</h2>
+
+      <form action="/vigenere/#encrypt-decrypt" id="vigenere-form" method="POST">
+        {% csrf_token %}
+        <div class="cipher-form">
+          <div class="form-group">
+            <label for="input-text">Plaintext/Ciphertext:</label>
+            <textarea name="input-text" id="input-text" placeholder="Enter or Paste your text here"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="key">Keyword:</label>
+            <input type="text" id="key" placeholder="Enter a keyword (e.g. KEY)">
+            <div class="instruction">Please enter an alphabetical keyword
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" name="action" class="btn" value="encrypt">Encrypt</button>
+            <button type="submit" name="action" class="btn-outline" value="decrypt">Decrypt</button>
+          </div>
+
+          <div class="form-group">
+            <label for="output-text">Output:</label>
+          {% if result %}
+            <textarea name="output-text" id="output-text" readonly>{{ result }}</textarea>
+          {% else %}
+            <textarea name="output-text" id="output-text" readonly></textarea>
+          {% endif %}
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-main">
+        <h3 class="footer-title">Cipher Tool</h3>
+        <p>Explore the art of cryptography</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; Group 9. All rights reserved.</p>
+        <small>Created with passion for cryptography and network security &lt;3</small>
+        <small>WONDERHOY!!!</small>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('vigenere-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const text = document.getElementById('input-text').value;
+        const key = document.getElementById('key').value;
+        const action = document.activeElement.value;
+
+        fetch('/vigenere/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}',
+          },
+          body: JSON.stringify({text, key, action}),
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.result) {
+            document.getElementById('output-text').value = data.result;
+          } else {
+            document.getElementById('output-text').value = 'Error: No result';
+          }
+        })
+        .catch(error => {
+          document.getElementById('output-text').value = "An error occurred.";
+          console.error('Error:', error);
+        });
+      });
+    </script>
+  </body>
+</html>
