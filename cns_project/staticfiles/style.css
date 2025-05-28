@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff66bb;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #ffe6f0;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #1f1f2e;
+}
+
+.hero-desc {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn,
+.btn-outline {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #ff66bb;
+  color: white;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 2px solid #ff66bb;
+  color: #ff66bb;
+}
+
+.btn:hover,
+.btn-outline:hover {
+  opacity: 0.85;
+}
+
+/* general section */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  width: 300px;
+  min-height: 300px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #ff66bb;
+}
+
+.card p {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Caesar & Vigenere details*/
+.details {
+  background-color: #ffe6f0;
+  padding: 4rem 2rem 0.75rem 2rem;
+  text-align: center;
+}
+
+.details h2 {
+  margin-top: 0;
+}
+
+.details .card-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.details .card {
+  max-width: 800px;
+  width: 100%;
+  min-height: auto;
+}
+
+.info-list {
+  list-style-position: inside;
+  margin-bottom: 1.5rem;
+  padding-left: 2px;
+}
+
+.info-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  background-color: #1f1f2e;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-main h3 {
+  color: #ff66bb;
+  margin-bottom: 0.5rem;
+}
+
+.footer-copy small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #bbb;
+}
+
+/* encryp/decrypt form */
+#encrypt-decrypt {
+  background-color: #ffe6f0 !important;
+  padding: 4rem 2rem !important;
+}
+
+.cipher-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+textarea,
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ff66bb;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.instruction {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
